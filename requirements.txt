@@ -1,0 +1,13 @@
+langchain
+langchain_community
+unstructured
+chromadb
+langchain-google-genai
+pillow
+openai
+tiktoken
+cohere
+flet
+fake_useragent
+bs4
+serpapi
