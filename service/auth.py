@@ -3,11 +3,21 @@ from firebase_admin import auth
 from firebase_admin import credentials
 import requests
 import re
-
+import psycopg2 as pg
 
 cred = credentials.Certificate("service_account.json")
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'backend2023mis.appspot.com'
+})
 
-firebase_admin.initialize_app(cred)
+def connect_db():
+    return pg.connect(
+    dbname="root",
+    user="lazzicat",
+    password="gwmjblfXfQGH6Xee94FO",
+    host="sk8app2024.ch2aea0k4vpx.ap-northeast-1.rds.amazonaws.com",
+    port="5432"
+    )
 
 
 def get_user(email):
@@ -24,7 +34,8 @@ def register_user(name, email,password):
         password=password,
         display_name=name,)
         return user.uid
-    except:
+    except Exception as e:
+        print(e)
         return None
 
 def authenticate(email,password):

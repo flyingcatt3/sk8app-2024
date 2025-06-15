@@ -9,6 +9,17 @@ class SignupPage(Container):
     self.switch_page = switch_page
 
     self.expand = True
+    self.password_error = Row(
+          controls=[
+            Image(src='assets/icons/danger.png',),
+            Text(
+              value='Password must be at least 6 characters',
+              color='red',
+              font_family='poppins regular'
+              )
+            ],
+          visible=False
+          )
     self.password_box = TextField(
       password=True,
       suffix=Container(
@@ -156,6 +167,7 @@ class SignupPage(Container):
                           # padding=20,
                           content=self.password_box,
                         ),
+                        self.password_error,
                         Container(height=1),
                         Container(
                           content=Column(

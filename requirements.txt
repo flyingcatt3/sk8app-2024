@@ -11,3 +11,5 @@ flet
 fake_useragent
 bs4
 serpapi
+psycopg2
+firebase_admin

@@ -1,0 +1,8 @@
+以下是賣場商品
+
+uid,name,description,price,time,status,img,id
+5,YOW Snappers 32.5" Surfskate 衝浪滑板,"只摸過一次，正常使用痕跡 跟新的一樣 不年輕經不起摔，終究沒辦法跟偶像阿嶽一樣帥，還跟新的一樣。",8500,2024-06-05 07:07:22.743763+00,True,"{https://storage.googleapis.com/backend2023misproject2.appspot.com/media/image/638790675207152251.jpg}",3
+5,pill技術板,全新 附送工具 國中的朋友送的自己有其他板故便宜出售,2000,2024-06-05 07:19:41.56049+00,True,"{https://storage.googleapis.com/backend2023misproject2.appspot.com/media/image/638790675207152252.jpg}",4
+5,滑板,"【目的】 ：賣\r\n【購入地點】：當初蝦皮購入\r\n【商品名稱】：滑板\r\n【商品尺寸】：",500,2024-06-05 07:56:38.945158+00,True,"{https://storage.googleapis.com/backend2023misproject2.appspot.com/media/image/638790675207152253.jpg}",8
+5,日本版Aape By A Bathing Ape 經典綠 Deck,"【目的】 ：調整蒐藏販售\r\n【購入地點】：日本\r\n【商品名稱】：日本版Aape By A Bathing Ape 經典綠 Deck\r\n【商品尺寸】：",2800,2024-06-05 07:59:45.17271+00,True,"{https://storage.googleapis.com/backend2023misproject2.appspot.com/media/image/638790675207152254.jpg}",9
+5,Independent stage11 polished standard 標準輪架,"【目的】 ：買賣\r\n【購入地點】 : 美國\r\n【商品名稱】：Independent stage11 polished standard 標準輪架\r\n【商品尺寸】：",1600,2024-06-05 08:08:47.319167+00,True,"{https://storage.googleapis.com/backend2023misproject2.appspot.com/media/image/638790675207152255.jpg}",10

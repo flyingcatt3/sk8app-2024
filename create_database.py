@@ -8,7 +8,7 @@ import os
 import shutil
 
 CHROMA_PATH = "chroma"
-DATA_PATH = "data/redbull"
+DATA_PATH = os.getcwd()+"\data\\redbull"
 
 embeddings = CohereEmbeddings(model="embed-multilingual-v3.0",cohere_api_key="0X7IQsghxQVYwVdnC4C2nMgpX5xx4i2yGeYsuIN6")
 
@@ -38,7 +38,7 @@ def split_text(documents: list[Document]):
     chunks = text_splitter.split_documents(documents)
     print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
 
-    document = chunks[10]
+    document = chunks[0]
     print(document.page_content)
     print(document.metadata)
 
@@ -47,8 +47,8 @@ def split_text(documents: list[Document]):
 
 def save_to_chroma(chunks: list[Document]):
     # Clear out the database first.
-    if os.path.exists(CHROMA_PATH):
-        shutil.rmtree(CHROMA_PATH)
+    #if os.path.exists(CHROMA_PATH):
+       # shutil.rmtree(CHROMA_PATH)
 
     # Create a new DB from the documents.
     db = Chroma.from_documents(

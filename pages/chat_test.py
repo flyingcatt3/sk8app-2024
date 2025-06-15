@@ -26,6 +26,8 @@ Context僅做為參考,回答一般問題時無須考慮到Context是否提到�
 ---
 """  # 定義提示模板
 
+# 定義示例問題列表
+
 # 滑板場地情報
 pL1 = ["能介紹在台灣有哪些專業的滑板場地嗎?",
        "在台灣哪些城市有室內滑板場地？"
@@ -54,11 +56,10 @@ pL4 = ["有甚麼推薦的滑板招式?",
        "有沒有針對滑板初學者的練習技巧建議？"]
 
 # 滑板選購指南
-pL5 = ["這個APP賣場有賣衝浪滑板嗎?",
+pL5 = ["我想買一個滑板,有甚麼推薦的品牌或型號?",
        "想要入門的滑板手應該選擇哪種類型的滑板？",
        "除了滑板本身，有哪些必備配件或保護裝備？",
-       "在台灣購買滑板時應該注意哪些品牌或商店？",
-       "你的賣場最便宜的商品是?"]
+       "在台灣購買滑板時應該注意哪些品牌或商店？"]
 
 load_dotenv()  # 載入 .env 文件中的環境變數
 google_api_key = os.getenv('GOOGLE_API_KEY')  # 獲取 Google API 密鑰
@@ -72,12 +73,11 @@ safety_settings_NONE = [
 # 定義主要樣式
 def main_style() -> dict:
     return {
-        #"width": 800,
-        #"height": 600,
+        "width": 800,
+        "height": 600,
         "bgcolor": "#141518",
         "border_radius": 10,
         "padding": 20,
-        "expand": True,
     }
 
 # 定義提示框樣式
@@ -170,8 +170,8 @@ class Prompt(ft.TextField):
         #print(f"Prompt: {prompt}")
 
         # 初始化 ChatGoogleGenerativeAI 對象並生成回應
-        model = ChatGoogleGenerativeAI(model="gemini-1.5-pro", google_api_key=google_api_key, temperature=0.5)
-        model.client = genai.GenerativeModel(model_name='gemini-1.5-pro', safety_settings=safety_settings_NONE)
+        model = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=google_api_key, temperature=0.5)
+        model.client = genai.GenerativeModel(model_name='gemini-pro', safety_settings=safety_settings_NONE)
         response = ""
         for chunk in model.stream(prompt):
             response += chunk.content
@@ -194,7 +194,7 @@ class Prompt(ft.TextField):
                 P.controls.remove(P.controls[1])
                 P.controls.remove(P.controls[1])
                 P.appbar = None
-                P.controls.insert(len(P.controls)-2, chatList)
+                P.controls.append(chatList)
                 P.update()
             prompt.user_output(prompt=text)
             prompt.gpt_output(prompt=text)
@@ -233,23 +233,26 @@ class Chat(ft.View):
 
         global P,chatList,pr,submitBtn,prompt
 
-        P=self
-        self.horizontal_alignment = "center"
-        self.theme_mode = "dark"
-        #P.title = "帕魯 - 你的滑板AI助理"
+        P=self.page
+        P.horizontal_alignment = "center"
+        P.theme_mode = "dark"
+        P.title = "帕魯 - 你的滑板AI助理"
         #P.window_height = 1080
-        self.appbar = ft.AppBar(
+        P.appbar = ft.AppBar(
             title=ft.Text(value="帕魯 - 你的滑板AI助理", size=28, theme_style="BOLD"),
-            center_title=True,
-
+            center_title=True
         )
-        self.snack_bar = ft.SnackBar(ft.Text("請至少輸入2個字元以上的提示", size=20))
+        P.snack_bar = ft.SnackBar(ft.Text("請至少輸入2個字元以上的提示", size=20))
 
         chatList = MainContentArea()
         prompt = Prompt(chat=chatList.chat)
         pr = ft.ProgressRing()
         submitBtn = ft.IconButton(icon=ft.icons.SEND, on_click=prompt.run_prompt, data=0)
         pr.visible = False
+        input = ft.BottomAppBar(
+            content=ft.Row([prompt, submitBtn, pr], alignment="CENTER", width=P.window_width),
+            bgcolor=ft.colors.with_opacity(0.5, "#181818")
+        )
 
         btn1 = ft.ElevatedButton(content=ft.Text("板點情報", size=20), width=300, height=300, style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=20)), on_click=btnClick, data=1)
         btn2 = ft.ElevatedButton(content=ft.Text("近期活動", size=20), width=300, height=300, style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=20)), on_click=btnClick, data=2)
@@ -260,7 +263,7 @@ class Chat(ft.View):
         listBtn = ft.ListView(expand=1, horizontal=True, spacing=10)
         listBtn.controls = [btn1, btn2, btn3, btn4, btn5]
 
-        self.controls=[
+        P.controls=[
             ft.Divider(height=1, color="transparent"),
             ft.Text(spans=[
                 ft.TextSpan(
@@ -275,17 +278,14 @@ class Chat(ft.View):
                         ),
                     ),
                 ),
-                ],
+            ],
             ),
             ft.Divider(height=4, color="transparent"),
             listBtn,
             ft.Divider(height=2, color="transparent"),
+            input
+        ]
+        #P.update()
 
-            #input
-            ft.Row([prompt, submitBtn, pr], alignment=ft.alignment.bottom_center, width=self.page.window_width)
-            ]
-
-'''
 if __name__ == "__main__":
-    ft.app(target=main)
-'''
+    ft.app(target=Chat)
