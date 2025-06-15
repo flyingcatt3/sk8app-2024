@@ -3,3 +3,4 @@ chroma
 .DS_Store
 .env
 __pycache__
+service_account.json
