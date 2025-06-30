@@ -1,21 +1,21 @@
-# Langchain RAG Tutorial
+# sk8app-2024 專案說明
 
-Install dependencies.
+## 專案簡介
 
-```python
-pip install -r requirements.txt
-```
+本專案是一個以 Flet 框架開發的多功能滑板主題應用程式，結合 AI 助理、賣場、論壇、聊天室等功能。用戶可註冊、登入，並在平台上進行商品瀏覽、討論與即時對話，亦可與 AI 助理互動。
 
-Create the Chroma DB.
+## 主要功能
 
-```python
-python create_database.py
-```
+- **用戶註冊/登入**：支援帳號註冊與登入驗證
+- **賣場管理**：商品瀏覽、購物車、商品上架
+- **論壇討論**：發文、回覆、瀏覽討論串
+- **AI 助理**：可根據用戶輸入進行智能回應
+- **資料庫管理**：整合 Chroma DB 進行資料儲存與查詢
 
-Query the Chroma DB.
+## 專案結構簡介
 
-```python
-python query_data.py "How does Alice meet the Mad Hatter?"
-```
-
-You'll also need to set up an OpenAI account (and set the OpenAI key in your environment variable) for this to work.
+- `app.py`：主程式入口，負責頁面切換與應用邏輯
+- `pages/`：各功能頁面（賣場、論壇、聊天室、登入註冊等）
+- `service/`、`utils/`：後端服務與輔助工具
+- `create_database.py`、`query_data.py`：資料庫建立與查詢腳本
+- `requirements.txt`：所需套件清單
