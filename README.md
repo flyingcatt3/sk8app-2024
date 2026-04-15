@@ -19,3 +19,5 @@
 - `service/`、`utils/`：後端服務與輔助工具
 - `create_database.py`、`query_data.py`：資料庫建立與查詢腳本
 - `requirements.txt`：所需套件清單
+
+## For more information in detail, please kindly visit the pdf docs in this repo.
