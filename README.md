@@ -20,4 +20,4 @@
 - `create_database.py`、`query_data.py`：資料庫建立與查詢腳本
 - `requirements.txt`：所需套件清單
 
-## For more information in detail, please kindly visit [the pdf docs](https://github.com/flyingcatt3/sk8app-2024/blob/main/%E7%AC%AC%E4%B8%89%E7%B5%84_%E7%94%9F%E6%88%90%E5%BC%8FAI%E8%BC%94%E5%8A%A9%E6%BB%91%E6%9D%BF%E4%B8%80%E7%AB%99%E5%BC%8F%E6%9C%8D%E5%8B%99_%E7%B3%BB%E7%B5%B1%E5%B0%88%E9%A1%8C%E8%A8%88%E7%95%AB%E6%9B%B8.pdf) in this repo.
+## For more information in detail, please kindly visit [the pdf docs](https://github.com/flyingcatt3/sk8app-2024/blob/main/%E7%B3%BB%E7%B5%B1%E5%B0%88%E9%A1%8C%E8%A8%88%E7%95%AB%E6%9B%B8.pdf) in this repo.
